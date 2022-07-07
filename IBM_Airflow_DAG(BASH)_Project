@@ -25,12 +25,6 @@ dag = DAG(
 
 # creating tasks
 
-download = BashOperator(
-     task_id = "download"
-    ,bash_command = 'wget https://cf-courses-data.s3.us.cloud-object-storage.appdomain.cloud/IBM-DB0250EN-SkillsNetwork/labs/Final%20Assignment/tolldata.tgz  /home/project/airflow/dags/finalassignment'
-    ,dag=dag,
-
-)
 
 unzip_data =  BashOperator(
      task_id = "unzip_data"
@@ -69,5 +63,4 @@ transform_data = BashOperator(
 )
 
 # creating pipeline
-
-download >> unzip_data >> extract_data_from_csv >> extract_data_from_tsv >> extract_data_from_fixed_width >> consolidate_data >> transform_data
+unzip_data >> extract_data_from_csv >> extract_data_from_tsv >> extract_data_from_fixed_width >> consolidate_data >> transform_data
