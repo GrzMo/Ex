@@ -52,7 +52,9 @@ extract_data_from_fixed_width = BashOperator(
 
 consolidate_data = BashOperator(
      task_id = "consolidate_data"
-    ,bash_command = 'paste -d"," csv_data.csv tsv_data.csv fixed_width_data.csv > /home/project/airflow/dags/finalassignment/staging/extracted_data.csv'
+    ,bash_command = 'paste -d"," /home/project/airflow/dags/finalassignment/staging/csv_data.csv \
+        /home/project/airflow/dags/finalassignment/staging/tsv_data.csv \
+            /home/project/airflow/dags/finalassignment/staging/fixed_width_data.csv > extracted_data.csv'
     ,dag=dag,
 )
 
