@@ -46,7 +46,7 @@ def extract_json(file_to_process):
 def extract_xml(file_to_process):
   df = pd.DataFrame(columns=['name','height','weight'])    #empty df with specified column names
   tree = ET.parse(file_to_process)                          #parsing xml file
-  root = tree.getroot()                                     #root of xml fime
+  root = tree.getroot()                                     #root of xml file
   for person in root:                                       # loop to go through all branches
     name = person.find('name').text                         # stores name data from a branch 
     height = float(person.find('height').text)
@@ -68,8 +68,8 @@ def extract():
   return extracted_data
 
 """####Transform
-1.  Convert height which is in inches to millimeters
-2.  Convert weight which is in pounds to kilograms
+1.  Converts height which is in inches to millimeters
+2.  Converts weight which is in pounds to kilograms
 """
 
 def transform(data):
@@ -89,7 +89,7 @@ def log(message):
   now = datetime.now()          
   timestamp = now.strftime(timestamp_format)    # converts present time to text and fits it into defined format
   with open(logfile,'a') as f:
-    f.write(timestamp + ' ' + message + '\n')    # creates info lines for log and appends it to log file
+    f.write(timestamp + ' ' + message + '\n')    # creates info lines for log and appends it to the log file
 
 """####ETL"""
 
